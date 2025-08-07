@@ -16,6 +16,10 @@ export class TagService {
     return `This action returns a #${id} tag`;
   }
 
+  findByLibelle(libelle: string) {
+    return `This action returns a tag with libelle ${libelle}`;
+  }
+
   update(id: number, updateTagDto: UpdateTagDto) {
     return `This action updates a #${id} tag`;
   }
