@@ -10,38 +10,11 @@ import {
 import { TagService } from './tag.service';
 import { CreateTagDto } from '../../dto/create-tag.dto';
 import { UpdateTagDto } from '../../dto/update-tag.dto';
-import {
-  ApiCreatedResponse,
-  ApiOkResponse,
-  DocumentBuilder,
-} from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
 
 @Controller('tag')
 export class TagController {
   constructor(private readonly tagService: TagService) {}
-
-  config = new DocumentBuilder()
-    .addGlobalResponse({
-      status: 400,
-      description: 'Bad Request -> Invalid request format or data types',
-    })
-    .addGlobalResponse({
-      status: 401,
-      description: 'Unauthorized -> Please log in to access this resource',
-    })
-    .addGlobalResponse({
-      status: 500,
-      description: 'Internal Server Error -> An unexpected error occurred',
-    })
-    .addGlobalResponse({
-      status: 502,
-      description: 'Bad Gateway -> Please try again later',
-    })
-    .addGlobalResponse({
-      status: 503,
-      description: 'Service Unavailable -> Please try again later',
-    })
-    .build();
 
   @Post()
   @ApiCreatedResponse({

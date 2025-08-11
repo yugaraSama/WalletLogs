@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-import { IsEmail, IsStrongPassword, IsUUID } from 'class-validator';
+import { IsEmail, IsStrongPassword } from 'class-validator';
 import { Expose } from 'class-transformer';
 
 // what is transfered
 export class CreateUserDto {
-  @IsUUID('all')
-  @Expose()
-  id: string;
+  // @IsUUID('all')
+  // @Expose()
+  // id: string;
 
   @IsEmail()
   email: string;
@@ -21,11 +20,15 @@ export class CreateUserDto {
   @Expose()
   password: string;
 
-  firstName: string;
+  @Expose()
+  surname: string;
 
-  lastName: string;
+  @Expose()
+  name: string;
 
+  @Expose()
   username: string;
 
+  @Expose()
   createdAt: Date;
 }
