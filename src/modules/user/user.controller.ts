@@ -32,18 +32,18 @@ export class UserController {
   @Get(':id')
   @ApiOkResponse({ type: BasicUserDto })
   findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
+    return this.userService.findOne(id);
   }
 
   @Patch(':id')
   @ApiOkResponse({ type: UpdateUserDto })
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto);
+    return this.userService.update(id, updateUserDto);
   }
 
   @Delete(':id')
-  @ApiOkResponse({ type: Number })
+  @ApiOkResponse({ type: String })
   remove(@Param('id') id: string) {
-    return this.userService.remove(+id);
+    return this.userService.remove(id);
   }
 }

@@ -3,10 +3,6 @@ import { Expose } from 'class-transformer';
 
 // what is transfered
 export class CreateUserDto {
-  // @IsUUID('all')
-  // @Expose()
-  // id: string;
-
   @IsEmail()
   email: string;
 
