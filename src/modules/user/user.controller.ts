@@ -11,7 +11,7 @@ import { UserService } from './user.service';
 import { CreateUserDto } from '../../dto/create-user.dto';
 import { UpdateUserDto } from '../../dto/update-user.dto';
 import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
-import { BasicUserDto } from '../../dto/basi-user.dto';
+import { BasicUserDto } from '../../dto/basic-user.dto';
 
 @Controller('user')
 export class UserController {

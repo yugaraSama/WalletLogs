@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { PartialType } from '@nestjs/swagger';
 import { CreateTagDto } from './create-tag.dto';
 import { Expose } from 'class-transformer';

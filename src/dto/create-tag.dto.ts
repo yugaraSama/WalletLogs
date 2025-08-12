@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Expose } from 'class-transformer';
 import { IsDate, IsString, IsUUID } from 'class-validator';
 
