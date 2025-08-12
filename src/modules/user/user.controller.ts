@@ -12,6 +12,7 @@ import { CreateUserDto } from '../../dto/create-user.dto';
 import { UpdateUserDto } from '../../dto/update-user.dto';
 import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
 import { BasicUserDto } from '../../dto/basic-user.dto';
+import { User } from 'src/entities/user.entity';
 
 @Controller('user')
 export class UserController {
@@ -42,7 +43,7 @@ export class UserController {
   }
 
   @Delete(':id')
-  @ApiOkResponse({ type: String })
+  @ApiOkResponse({ type: User })
   remove(@Param('id') id: string) {
     return this.userService.remove(id);
   }
