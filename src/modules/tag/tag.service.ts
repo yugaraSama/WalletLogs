@@ -1,31 +1,40 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTagDto } from '../../dto/create-tag.dto';
-import { UpdateTagDto } from '../../dto/update-tag.dto';
+import { PrismaClient } from 'generated/prisma';
 
-//
+const prisma = new PrismaClient();
+
 @Injectable()
 export class TagService {
-  create(createTagDto: CreateTagDto) {
-    return 'This action adds a new tag';
+  async create(createTagDto: CreateTagDto) {
+    return await prisma.tag.create({
+      data: {
+        id: crypto.randomUUID(),
+        ...createTagDto,
+        createAt: new Date(),
+      },
+    });
   }
 
-  findAll() {
-    return `This action returns all tag`;
+  async findAll() {
+    return await prisma.tag.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} tag`;
+  async findOne(id: string) {
+    return await prisma.tag.findUnique({
+      where: { id },
+    });
   }
 
-  findByLibelle(libelle: string) {
-    return `This action returns a tag with libelle ${libelle}`;
+  async findByLibelle(libelle: string) {
+    return await prisma.tag.findFirst({
+      where: { libelle },
+    });
   }
 
-  update(id: number, updateTagDto: UpdateTagDto) {
-    return `This action updates a #${id} tag`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} tag`;
+  async remove(id: string) {
+    return await prisma.tag.delete({
+      where: { id },
+    });
   }
 }

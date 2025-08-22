@@ -1,16 +1,8 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { TagService } from './tag.service';
 import { CreateTagDto } from '../../dto/create-tag.dto';
-import { UpdateTagDto } from '../../dto/update-tag.dto';
 import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
+import { BasicTagDto } from 'src/dto/basic-tag.dto';
 
 @Controller('tag')
 export class TagController {
@@ -28,7 +20,7 @@ export class TagController {
   @Get()
   @ApiOkResponse({
     description: 'List of all tags',
-    type: [CreateTagDto],
+    type: [BasicTagDto],
   })
   findAll() {
     return this.tagService.findAll();
@@ -37,28 +29,19 @@ export class TagController {
   @Get(':id')
   @ApiOkResponse({
     description: 'Tag found by ID',
-    type: UpdateTagDto,
+    type: BasicTagDto,
   })
   findOne(@Param('id') id: string) {
-    return this.tagService.findOne(+id);
+    return this.tagService.findOne(id);
   }
 
   @Get(':libelle')
   @ApiOkResponse({
     description: 'Tag found by libelle',
-    type: [UpdateTagDto],
+    type: [BasicTagDto],
   })
   findByLibelle(@Param('libelle') libelle: string) {
     return this.tagService.findByLibelle(libelle);
-  }
-
-  @Patch(':id')
-  @ApiOkResponse({
-    description: 'Tag updated successfully',
-    type: UpdateTagDto,
-  })
-  update(@Param('id') id: string, @Body() updateTagDto: UpdateTagDto) {
-    return this.tagService.update(+id, updateTagDto);
   }
 
   @Delete(':id')
@@ -67,6 +50,6 @@ export class TagController {
     type: Number,
   })
   remove(@Param('id') id: string) {
-    return this.tagService.remove(+id);
+    return this.tagService.remove(id);
   }
 }

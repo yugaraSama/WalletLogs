@@ -1,11 +1,7 @@
 import { Expose } from 'class-transformer';
-import { IsDate, IsString, IsUUID } from 'class-validator';
+import { IsDate, IsString } from 'class-validator';
 
 export class CreateTagDto {
-  @IsUUID('all')
-  @Expose()
-  id: string;
-
   @IsString()
   @Expose()
   libelle: string;
